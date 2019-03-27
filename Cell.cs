@@ -6,7 +6,7 @@ namespace Logic
     {
         private readonly int value;
         private readonly int x, y;
-        private bool isAllowed = true;
+        private bool isBusy = false;
 
         internal Cell(int x, int y, int value)
         {
@@ -15,65 +15,64 @@ namespace Logic
             this.y = y;
         }
 
-        internal Result findLargestFactorChain(Cell[,] cells, TableSize tableSize, int chainCount, bool startPoint)
+        internal Result findLargestAdjacentCellsProduct(Cell[,] cells, TableSize tableSize, int tailCount, bool startPoint)
         {
-            //Console.Write($"[{this.y}, {this.x}] => ");
+            Debug($"[{4 - tailCount}]: {{{this.x}, {this.y}}}");
+            this.isBusy = true;
             var result = new Result();
+            var thirdResult;
 
-            if (chainCount > 1)
+            if (tailCount > 1)
             {
-                // Обход всегда происходит по часовой стрелке.
-                // Запрещены шаги на клетки:
-                //  1). которые были корнем проверки;
-                //  2). шаги назад (на клетку, из которой только что пришли);
-
-                for (int dy = -1; dy < 2; dy++)
+                for (int y = this.y - 1; y <= this.y + 1; y++)
                 {
-                    int y = this.y + dy;
-
                     if (y < 0)
                         continue; // out of the range of Y axis
 
                     if (y == tableSize.Y)
                         break; // out of the range of Y axis
 
-                    for (int dx = 1; dx > -2; dx--)
+                    for (int x = this.x - 1; x <= this.x + 1; x++)
                     {
-                        int x = this.x + dx;
-
-                        if (dy == 0 && dx == 0)
-                            continue; // skipping the current cell position
+                        if (y == this.y && x == this.x)
+                            continue; // skipp the current cell position (center of the orbit)
                         else if (x == tableSize.X)
-                            continue; // out of the range of X axis
+                            break;
                         else if (x < 0)
-                            break; // out of the range of X axis
+                            continue;
 
                         Cell nextCell = cells[y, x];
 
-                        if (!nextCell.isAllowed)
-                            continue; // It's a previous step cell or it has been a start point once.
+                        if (nextCell.isBusy)
+                            continue;
 
-                        this.isAllowed = false;
-                        Result newResult = cells[y, x].findLargestFactorChain(cells, tableSize, chainCount - 1, false);
-                        this.isAllowed = true;
+                        Result newResult = nextCell.findLargestAdjacentCellsProduct(cells, tableSize, tailCount - 1, false);
 
                         if (newResult.ProductValue > result.ProductValue)
+                        {
                             result = newResult;
+                            Debug($"+{result.ProductValue}");
+                        }
                     }
                 }
+
+                result.ProductValue *= this.value;
             }
             else
             {
-                // Apply this cell values.S
-                result.ProductValue = 1;
+                result.ProductValue = this.value;
             }
 
             //Console.WriteLine();
 
-            this.isAllowed = !startPoint; // If it's a start point it's check and will never be allowed.
-            result.ProductValue *= this.value;
+            this.isBusy = false;
             result.Cells.AddFirst(new CellPosition(this.x, this.y));
             return result;
+        }
+
+        private static void Debug(string text)
+        {
+            Console.WriteLine(text);
         }
     }
 }

@@ -25,7 +25,6 @@ namespace Logic
         public Result findLargestFactorChain(int chainCount)
         {
             var largestResult = new Result();
-            int counter = 0;
 
             for (int y = 0; y < _size.Y; y++)
             {
@@ -33,7 +32,7 @@ namespace Logic
                 {
                     //Console.WriteLine("----------------------------");
                     //Console.Write($"({++counter}): ");
-                    Result newResult = _cells[y, x].findLargestFactorChain(_cells, _size, chainCount, true);
+                    Result newResult = _cells[y, x].findLargestAdjacentCellsProduct(_cells, _size, chainCount, true);
 
                     if (largestResult.ProductValue < newResult.ProductValue)
                     {
