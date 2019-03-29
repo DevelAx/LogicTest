@@ -71,11 +71,8 @@ namespace Logic
 
                     if (cellsCount == 1)
                     {
-                        DebugLN(string.Join(", ", _currentResult.Cells.Reverse()) + $" ({_currentResult.Product})");
-
                         if (_currentResult.Product > _largestResult.Product)
                         {
-                            DebugLN($" - new result: {_currentResult.Product}");
                             _largestResult = new Result(_currentResult);
                         }
                     }
@@ -144,18 +141,6 @@ namespace Logic
             }
 
             return false;
-        }
-
-        private static void DebugLN(string text)
-        {
-            if (_debug)
-                Console.WriteLine(text);
-        }
-
-        private static void Debug(string text)
-        {
-            if (_debug)
-                Console.Write(text);
         }
     }
 }

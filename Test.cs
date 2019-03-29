@@ -222,22 +222,24 @@ namespace Logic
             }
 
             // Display results:
-            Console.WriteLine("--------------------------------------------");
-            Console.WriteLine($"Array: [{maxY}, {maxX}]");
-            Console.WriteLine($"Product: {string.Join(" + ", result.Cells.Select(c => c.Value))} = {result.Product}");
-            Console.WriteLine($"Steps: {result.Steps}");
-            Console.WriteLine($"Elapsed time: {(double)elapsedTime / 1000} second(s)");
 
             for (int y = 0; y < maxY; y++)
             {
                 for (int x = 0; x < maxX; x++)
                 {
                     char marker = (chainCells[y, x] ? '*' : ' ');
-                    Console.Write("{0, 3}", $"{marker}{array[y, x]}");
+                    Console.Write("{0, 4}", $"{marker}{array[y, x]}");
                 }
 
                 Console.WriteLine();
+                Console.WriteLine();
             }
+
+            Console.WriteLine($"Array (above): [{maxY}, {maxX}]");
+            Console.WriteLine($"Product: {string.Join(" + ", result.Cells.Select(c => c.Value))} = {result.Product}");
+            Console.WriteLine($"Steps: {result.Steps}");
+            Console.WriteLine($"Elapsed time: {(double)elapsedTime / 1000} second(s)");
+            Console.WriteLine("\n--------------------------------------------\n");
         }
 
         #endregion Private Methods
