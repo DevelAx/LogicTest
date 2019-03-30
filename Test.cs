@@ -222,7 +222,6 @@ namespace Logic
             }
 
             // Display results:
-
             for (int y = 0; y < maxY; y++)
             {
                 for (int x = 0; x < maxX; x++)
