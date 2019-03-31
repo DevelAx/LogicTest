@@ -6,7 +6,6 @@ Given an array of integers. The task is to find 4 adjacent cells with the larges
 
 #### Examples of correct solutions:
 ```
-
   *2  *2   1
 
   *2  *2   1
@@ -15,8 +14,8 @@ Given an array of integers. The task is to find 4 adjacent cells with the larges
 
 Array (above): [3, 3]
 Product: 2 + 2 + 2 + 2 = 16
-Steps: 187
-Elapsed time: 0.026 second(s)
+Steps: 297
+Elapsed time: 0.028 second(s)
 
 --------------------------------------------
 
@@ -28,7 +27,7 @@ Elapsed time: 0.026 second(s)
 
 Array (above): [3, 3]
 Product: 2 + 2 + 2 + 2 = 16
-Steps: 187
+Steps: 297
 Elapsed time: 0 second(s)
 
 --------------------------------------------
@@ -41,7 +40,7 @@ Elapsed time: 0 second(s)
 
 Array (above): [3, 3]
 Product: 2 + 2 + 2 + 2 = 16
-Steps: 187
+Steps: 297
 Elapsed time: 0 second(s)
 
 --------------------------------------------
@@ -54,7 +53,7 @@ Elapsed time: 0 second(s)
 
 Array (above): [3, 3]
 Product: 2 + 2 + 2 + 2 = 16
-Steps: 187
+Steps: 297
 Elapsed time: 0 second(s)
 
 --------------------------------------------
@@ -67,7 +66,7 @@ Elapsed time: 0 second(s)
 
 Array (above): [3, 3]
 Product: 2 + 2 + 2 + 2 = 16
-Steps: 187
+Steps: 297
 Elapsed time: 0 second(s)
 
 --------------------------------------------
@@ -80,7 +79,7 @@ Elapsed time: 0 second(s)
 
 Array (above): [3, 3]
 Product: 9 + 1 + 9 + 9 = 729
-Steps: 187
+Steps: 297
 Elapsed time: 0 second(s)
 
 --------------------------------------------
@@ -93,7 +92,7 @@ Elapsed time: 0 second(s)
 
 Array (above): [3, 3]
 Product: 9 + 1 + 9 + 9 = 729
-Steps: 187
+Steps: 297
 Elapsed time: 0 second(s)
 
 --------------------------------------------
@@ -108,8 +107,8 @@ Elapsed time: 0 second(s)
 
 Array (above): [4, 4]
 Product: 9 + 2 + 9 + 9 = 1458
-Steps: 657
-Elapsed time: 0.001 second(s)
+Steps: 1240
+Elapsed time: 0 second(s)
 
 --------------------------------------------
 
@@ -123,29 +122,29 @@ Elapsed time: 0.001 second(s)
 
 Array (above): [4, 4]
 Product: 9 + 1 + 9 + 9 = 729
-Steps: 657
+Steps: 1240
 Elapsed time: 0 second(s)
 
 --------------------------------------------
 
-   1   0   1   1   7   0   1   1
+  *1   0   1   1   7   0   1   1
 
-   2   0   1   1   5   0   1   1
+  *2   0   1   1   5   0   1   1
 
-   3   0   1   1   3   0   1   1
+  *3   0   1   1   3   0   1   1
 
-   4   0   1   1   9   0   1   1
+  *4   0   1   1   9   0   1   1
 
-   2   1  *2   1   3   0   1   1
+   2   1   2   1   3   0   1   1
 
-   3   1  *9   1   2   0   1   1
+   3   1   9   1   2   0   1   1
 
-   4   1   1  *9  *9   0   1   1
+   4   1   1   9   9   0   1   1
 
 Array (above): [7, 8]
-Product: 2 + 9 + 9 + 9 = 1458
-Steps: 812
-Elapsed time: 0.004 second(s)
+Product: 1 + 2 + 3 + 4 = 24
+Steps: 6200
+Elapsed time: 0 second(s)
 
 --------------------------------------------
 ```
