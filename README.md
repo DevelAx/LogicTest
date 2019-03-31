@@ -159,6 +159,8 @@ Elapsed time 2: 0 second(s)
 --------------------------------------------
 ```
 ---
-*P.S.
+<sup>
+ P.S.
 
 Perhaps this solution can be optimized, but I haven't considered it yet.*
+</sup>
