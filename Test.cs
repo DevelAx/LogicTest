@@ -62,10 +62,16 @@ namespace Logic
                     {1, 1, 1}
                 };
 
-                ProcessArray(array, 4);
+                Cell[] expectedCells = {
+                    new Cell(0, 0, 2),
+                    new Cell(1, 0, 2),
+                    new Cell(1, 0, 2),
+                    new Cell(1, 1, 2)
+                };
+
+                ProcessArray(array, 4, expectedCells);
             }
             {
-
                 int[,] array =
                 {
                     {2, 2, 2},
@@ -73,10 +79,16 @@ namespace Logic
                     {1, 1, 1}
                 };
 
-                ProcessArray(array, 4);
+                Cell[] expectedCells = {
+                    new Cell(0, 0, 2),
+                    new Cell(1, 0, 2),
+                    new Cell(2, 0, 2),
+                    new Cell(1, 1, 2)
+                };
+
+                ProcessArray(array, 4, expectedCells);
             }
             {
-
                 int[,] array =
                 {
                     {2, 0, 2},
@@ -84,10 +96,16 @@ namespace Logic
                     {1, 1, 1}
                 };
 
-                ProcessArray(array, 4);
+                Cell[] expectedCells = {
+                    new Cell(0, 0, 2),
+                    new Cell(2, 0, 2),
+                    new Cell(0, 1, 2),
+                    new Cell(1, 1, 2)
+                };
+
+                ProcessArray(array, 4, expectedCells);
             }
             {
-
                 int[,] array =
                 {
                     {2, 0, 1},
@@ -95,10 +113,16 @@ namespace Logic
                     {1, 1, 2}
                 };
 
-                ProcessArray(array, 4);
+                Cell[] expectedCells = {
+                    new Cell(0, 0, 2),
+                    new Cell(0, 1, 2),
+                    new Cell(1, 1, 2),
+                    new Cell(2, 2, 2)
+                };
+
+                ProcessArray(array, 4, expectedCells);
             }
             {
-
                 int[,] array =
                 {
                     {2, 0, 1},
@@ -106,10 +130,16 @@ namespace Logic
                     {2, 1, 1}
                 };
 
-                ProcessArray(array, 4);
+                Cell[] expectedCells = {
+                    new Cell(0, 0, 2),
+                    new Cell(1, 1, 2),
+                    new Cell(2, 1, 2),
+                    new Cell(0, 2, 2)
+                };
+
+                ProcessArray(array, 4, expectedCells);
             }
             {
-
                 int[,] array =
                 {
                     {9, 0, 1},
@@ -117,11 +147,16 @@ namespace Logic
                     {9, 1, 1}
                 };
 
-                ProcessArray(array, 4);
+                Cell[] expectedCells = {
+                    new Cell(0, 0, 9),
+                    new Cell(1, 1, 1),
+                    new Cell(2, 1, 9),
+                    new Cell(0, 2, 9)
+                };
+
+                ProcessArray(array, 4, expectedCells);
             }
-
             {
-
                 int[,] array =
                 {
                     {9, 0, 9},
@@ -132,7 +167,6 @@ namespace Logic
                 ProcessArray(array, 4);
             }
             {
-
                 int[,] array =
                 {
                     {9, 0, 1, 1},
@@ -141,10 +175,16 @@ namespace Logic
                     {9, 1, 1, 9}
                 };
 
-                ProcessArray(array, 4);
+                Cell[] expectedCells = {
+                    new Cell(0, 0, 9),
+                    new Cell(0, 1, 2),
+                    new Cell(0, 2, 9),
+                    new Cell(0, 3, 9)
+                };
+
+                ProcessArray(array, 4, expectedCells);
             }
             {
-
                 int[,] array =
                 {
                     {9, 0, 1, 1},
@@ -153,9 +193,15 @@ namespace Logic
                     {4, 1, 1, 9}
                 };
 
-                ProcessArray(array, 4);
-            }
+                Cell[] expectedCells = {
+                    new Cell(0, 0, 9),
+                    new Cell(1, 1, 1),
+                    new Cell(2, 2, 9),
+                    new Cell(3, 3, 9)
+                };
 
+                ProcessArray(array, 4, expectedCells);
+            }
             {
                 int[,] array =
                 {
@@ -168,7 +214,14 @@ namespace Logic
                     {4, 1, 1, 9, 9, 0, 1, 1}
                 };
 
-                ProcessArray(array, 4);
+                Cell[] expectedCells = {
+                    new Cell(2, 4, 2),
+                    new Cell(2, 5, 9),
+                    new Cell(3, 6, 9),
+                    new Cell(4, 6, 9)
+                };
+
+                ProcessArray(array, 4, expectedCells);
             }
         }
 
@@ -198,18 +251,30 @@ namespace Logic
 
         #region Private Methods
 
-        private static void ProcessArray(int[,] array, int cellChainLength)
+        private static void ProcessArray(int[,] array, int cellChainLength, Cell[] expectedCells = null)
         {
             Table table = new Table(array);
 
+            long startMsc = Environment.TickCount;
             Stopwatch timer = Stopwatch.StartNew();
             Result result = table.findLargestAdjacentCellsProduct(cellChainLength);
+            long elapsedMsc = Environment.TickCount - startMsc;
             timer.Stop();
 
-            ShowResult(array, result, timer.ElapsedMilliseconds);
+            if (expectedCells != null)
+            {
+                for (int i = 0; i < expectedCells.Length; i++)
+                {
+                    Cell expectedCell = expectedCells[i];
+                    Cell foundCell = result.Cells.SingleOrDefault(c => c.X == expectedCell.X && c.Y == expectedCell.Y && c.Value == expectedCell.Value);
+                    Debug.Assert(foundCell != null);
+                }
+            }
+
+            ShowResult(array, result, timer.ElapsedMilliseconds, elapsedMsc);
         }
 
-        private static void ShowResult(int[,] array, Result result, long elapsedTime)
+        private static void ShowResult(int[,] array, Result result, long elapsedTime, long elapsedTime2)
         {
             // Prepare to display results:
             int maxY = array.GetLength(0);
@@ -236,8 +301,9 @@ namespace Logic
 
             Console.WriteLine($"Array (above): [{maxY}, {maxX}]");
             Console.WriteLine($"Product: {string.Join(" + ", result.Cells.Select(c => c.Value))} = {result.Product}");
-            Console.WriteLine($"Steps: {result.Steps}");
+            Console.WriteLine($"Steps: {result.TotalSteps}");
             Console.WriteLine($"Elapsed time: {(double)elapsedTime / 1000} second(s)");
+            Console.WriteLine($"Elapsed time 2: {(double)elapsedTime2 / 1000} second(s)");
             Console.WriteLine("\n--------------------------------------------\n");
         }
 

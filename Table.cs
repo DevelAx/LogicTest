@@ -45,7 +45,7 @@ namespace Logic
 
                     int endX = x + deltaX - 1;
                     int endY = y + deltaY - 1;
-                    _largestResult.Steps += _steps;
+                    _largestResult.TotalSteps += _steps;
                     _steps = 0;
                     find(x, y, endX, endY, cellsCount);
                 }

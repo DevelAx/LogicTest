@@ -55,6 +55,6 @@ namespace Logic
             get { return _cells; }
         }
 
-        public int Steps { get; set; }
+        public int TotalSteps { get; set; }
     }
 }
