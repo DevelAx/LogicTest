@@ -151,4 +151,5 @@ Elapsed time: 0.004 second(s)
 ```
 ---
 *P.S.
+
 Perhaps this solution can be optimized, but I haven't considered it yet.*
