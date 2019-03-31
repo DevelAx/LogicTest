@@ -160,7 +160,5 @@ Elapsed time 2: 0 second(s)
 ```
 ---
 <sup>
- P.S.
-
-Perhaps this solution can be optimized, but I haven't considered it yet.*
+* Perhaps this solution can be optimized, but I haven't considered it yet.
 </sup>
