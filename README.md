@@ -7,9 +7,6 @@ Given an array of integers. The task is to find 4 adjacent cells with the larges
 #### Examples of correct solutions:
 ```
 
-***********************
-*  Predefined Arrays: *
-***********************
   *2  *2   1
 
   *2  *2   1
