@@ -15,8 +15,7 @@ Given an array of integers. The task is to find 4 adjacent cells with the larges
 Array (above): [3, 3]
 Product: 2 + 2 + 2 + 2 = 16
 Steps: 187
-Elapsed time: 0.014 second(s)
-Elapsed time 2: 0.015 second(s)
+Elapsed time: 0.015 second(s)
 
 --------------------------------------------
 
@@ -30,7 +29,6 @@ Array (above): [3, 3]
 Product: 2 + 2 + 2 + 2 = 16
 Steps: 187
 Elapsed time: 0 second(s)
-Elapsed time 2: 0 second(s)
 
 --------------------------------------------
 
@@ -44,7 +42,6 @@ Array (above): [3, 3]
 Product: 2 + 2 + 2 + 2 = 16
 Steps: 187
 Elapsed time: 0 second(s)
-Elapsed time 2: 0 second(s)
 
 --------------------------------------------
 
@@ -58,7 +55,6 @@ Array (above): [3, 3]
 Product: 2 + 2 + 2 + 2 = 16
 Steps: 187
 Elapsed time: 0 second(s)
-Elapsed time 2: 0 second(s)
 
 --------------------------------------------
 
@@ -72,7 +68,6 @@ Array (above): [3, 3]
 Product: 2 + 2 + 2 + 2 = 16
 Steps: 187
 Elapsed time: 0 second(s)
-Elapsed time 2: 0 second(s)
 
 --------------------------------------------
 
@@ -86,7 +81,6 @@ Array (above): [3, 3]
 Product: 9 + 1 + 9 + 9 = 729
 Steps: 187
 Elapsed time: 0 second(s)
-Elapsed time 2: 0 second(s)
 
 --------------------------------------------
 
@@ -100,7 +94,6 @@ Array (above): [3, 3]
 Product: 9 + 1 + 9 + 9 = 729
 Steps: 187
 Elapsed time: 0 second(s)
-Elapsed time 2: 0 second(s)
 
 --------------------------------------------
 
@@ -116,7 +109,6 @@ Array (above): [4, 4]
 Product: 9 + 2 + 9 + 9 = 1458
 Steps: 657
 Elapsed time: 0 second(s)
-Elapsed time 2: 0 second(s)
 
 --------------------------------------------
 
@@ -132,7 +124,6 @@ Array (above): [4, 4]
 Product: 9 + 1 + 9 + 9 = 729
 Steps: 657
 Elapsed time: 0 second(s)
-Elapsed time 2: 0 second(s)
 
 --------------------------------------------
 
@@ -154,9 +145,7 @@ Array (above): [7, 8]
 Product: 2 + 9 + 9 + 9 = 1458
 Steps: 812
 Elapsed time: 0.003 second(s)
-Elapsed time 2: 0 second(s)
 
---------------------------------------------
 ```
 ---
 <sup>
